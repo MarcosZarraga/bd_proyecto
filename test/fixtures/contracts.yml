@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subscriber_id: 1
+  contract_signature_date: 2018-10-22
+
+two:
+  subscriber_id: 1
+  contract_signature_date: 2018-10-22
