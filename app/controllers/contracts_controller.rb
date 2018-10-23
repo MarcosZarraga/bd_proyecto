@@ -5,12 +5,12 @@ class ContractsController < ApplicationController
   def index
     @contracts = Contract.all
 
-    render json: @contracts
+    render json: {contracts:@contracts}
   end
 
   # GET /contracts/1
   def show
-    render json: @contract
+    render json: {contract:@contract}
   end
 
   # POST /contracts
@@ -18,7 +18,7 @@ class ContractsController < ApplicationController
     @contract = Contract.new(contract_params)
 
     if @contract.save
-      render json: @contract, status: :created, location: @contract
+      render json: {contract:@contract}, status: :created, location: @contract
     else
       render json: @contract.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class ContractsController < ApplicationController
   # PATCH/PUT /contracts/1
   def update
     if @contract.update(contract_params)
-      render json: @contract
+      render json: {contract:@contract}
     else
       render json: @contract.errors, status: :unprocessable_entity
     end

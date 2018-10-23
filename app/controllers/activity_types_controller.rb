@@ -5,12 +5,12 @@ class ActivityTypesController < ApplicationController
   def index
     @activity_types = ActivityType.all
 
-    render json: @activity_types
+    render json: {activity_types:@activity_types}
   end
 
   # GET /activity_types/1
   def show
-    render json: @activity_type
+    render json: {activity_type:@activity_type}
   end
 
   # POST /activity_types
@@ -18,7 +18,7 @@ class ActivityTypesController < ApplicationController
     @activity_type = ActivityType.new(activity_type_params)
 
     if @activity_type.save
-      render json: @activity_type, status: :created, location: @activity_type
+      render json: {activity_type:@activity_type}, status: :created, location: @activity_type
     else
       render json: @activity_type.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class ActivityTypesController < ApplicationController
   # PATCH/PUT /activity_types/1
   def update
     if @activity_type.update(activity_type_params)
-      render json: @activity_type
+      render json: {activity_type:@activity_type}
     else
       render json: @activity_type.errors, status: :unprocessable_entity
     end

@@ -5,12 +5,12 @@ class ActivityRulesController < ApplicationController
   def index
     @activity_rules = ActivityRule.all
 
-    render json: @activity_rules
+    render json: {activity_rules:@activity_rules}
   end
 
   # GET /activity_rules/1
   def show
-    render json: @activity_rule
+    render json: {activity_rule:@activity_rule}
   end
 
   # POST /activity_rules
@@ -18,7 +18,7 @@ class ActivityRulesController < ApplicationController
     @activity_rule = ActivityRule.new(activity_rule_params)
 
     if @activity_rule.save
-      render json: @activity_rule, status: :created, location: @activity_rule
+      render json: {activity_rule:@activity_rule}, status: :created, location: @activity_rule
     else
       render json: @activity_rule.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class ActivityRulesController < ApplicationController
   # PATCH/PUT /activity_rules/1
   def update
     if @activity_rule.update(activity_rule_params)
-      render json: @activity_rule
+      render json: {activity_rule:@activity_rule}
     else
       render json: @activity_rule.errors, status: :unprocessable_entity
     end

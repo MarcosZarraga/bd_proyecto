@@ -5,12 +5,12 @@ class LessonsController < ApplicationController
   def index
     @lessons = Lesson.all
 
-    render json: @lessons
+    render json: {lessons:@lessons}
   end
 
   # GET /lessons/1
   def show
-    render json: @lesson
+    render json: {lesson:@lesson}
   end
 
   # POST /lessons
@@ -18,7 +18,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new(lesson_params)
 
     if @lesson.save
-      render json: @lesson, status: :created, location: @lesson
+      render json: {lesson:@lesson}, status: :created, location: @lesson
     else
       render json: @lesson.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class LessonsController < ApplicationController
   # PATCH/PUT /lessons/1
   def update
     if @lesson.update(lesson_params)
-      render json: @lesson
+      render json: {lesson:@lesson}
     else
       render json: @lesson.errors, status: :unprocessable_entity
     end

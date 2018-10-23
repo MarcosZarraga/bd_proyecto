@@ -5,12 +5,12 @@ class SubscribersController < ApplicationController
   def index
     @subscribers = Subscriber.all
 
-    render json: @subscribers
+    render json: {subscribers:@subscribers}
   end
 
   # GET /subscribers/1
   def show
-    render json: @subscriber
+    render json: {subscriber:@subscriber}
   end
 
   # POST /subscribers
@@ -18,7 +18,7 @@ class SubscribersController < ApplicationController
     @subscriber = Subscriber.new(subscriber_params)
 
     if @subscriber.save
-      render json: @subscriber, status: :created, location: @subscriber
+      render json: {subscriber:@subscriber}, status: :created, location: @subscriber
     else
       render json: @subscriber.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class SubscribersController < ApplicationController
   # PATCH/PUT /subscribers/1
   def update
     if @subscriber.update(subscriber_params)
-      render json: @subscriber
+      render json: {subscriber:@subscriber}
     else
       render json: @subscriber.errors, status: :unprocessable_entity
     end

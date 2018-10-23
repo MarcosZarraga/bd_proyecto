@@ -5,12 +5,12 @@ class StudentsController < ApplicationController
   def index
     @students = Student.all
 
-    render json: @students
+    render json: {students:@students}
   end
 
   # GET /students/1
   def show
-    render json: @student
+    render json: {student:@student}
   end
 
   # POST /students
@@ -18,7 +18,7 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
 
     if @student.save
-      render json: @student, status: :created, location: @student
+      render json: {student:@student}, status: :created, location: @student
     else
       render json: @student.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class StudentsController < ApplicationController
   # PATCH/PUT /students/1
   def update
     if @student.update(student_params)
-      render json: @student
+      render json: {student:@student}
     else
       render json: @student.errors, status: :unprocessable_entity
     end

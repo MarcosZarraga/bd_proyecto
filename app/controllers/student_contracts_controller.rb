@@ -5,12 +5,12 @@ class StudentContractsController < ApplicationController
   def index
     @student_contracts = StudentContract.all
 
-    render json: @student_contracts
+    render json: {student_contracts:@student_contracts}
   end
 
   # GET /student_contracts/1
   def show
-    render json: @student_contract
+    render json: {student_contract:@student_contract}
   end
 
   # POST /student_contracts
@@ -18,7 +18,7 @@ class StudentContractsController < ApplicationController
     @student_contract = StudentContract.new(student_contract_params)
 
     if @student_contract.save
-      render json: @student_contract, status: :created, location: @student_contract
+      render json: {student_contract:@student_contract}, status: :created, location: @student_contract
     else
       render json: @student_contract.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class StudentContractsController < ApplicationController
   # PATCH/PUT /student_contracts/1
   def update
     if @student_contract.update(student_contract_params)
-      render json: @student_contract
+      render json: {student_contract:@student_contract}
     else
       render json: @student_contract.errors, status: :unprocessable_entity
     end

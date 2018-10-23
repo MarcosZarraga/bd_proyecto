@@ -5,12 +5,12 @@ class SchoolsController < ApplicationController
   def index
     @schools = School.all
 
-    render json: @schools
+    render json: {schools:@schools}
   end
 
   # GET /schools/1
   def show
-    render json: @school
+    render json: {school:@school}
   end
 
   # POST /schools
@@ -18,7 +18,7 @@ class SchoolsController < ApplicationController
     @school = School.new(school_params)
 
     if @school.save
-      render json: @school, status: :created, location: @school
+      render json: {school:@school}, status: :created, location: @school
     else
       render json: @school.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class SchoolsController < ApplicationController
   # PATCH/PUT /schools/1
   def update
     if @school.update(school_params)
-      render json: @school
+      render json: {school:@school}
     else
       render json: @school.errors, status: :unprocessable_entity
     end
