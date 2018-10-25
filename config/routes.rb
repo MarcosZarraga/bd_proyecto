@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :teachers
   resources :student_contracts
   resources :subscribers
   resources :levels
