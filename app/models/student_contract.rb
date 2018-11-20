@@ -1,3 +1,3 @@
 class StudentContract < ApplicationRecord
-	 # has_one: student,  dependent:destroy
+	 belongs_to :student
 end
