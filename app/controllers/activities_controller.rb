@@ -5,6 +5,10 @@ class ActivitiesController < ApplicationController
   def index
     @activities = Activity.all
 
+    if params&.[](:lesson_id)
+      @activities = @activities.where(:lesson_id => params[:lesson_id])
+    end
+
     render json: {activities:@activities}
   end
 
